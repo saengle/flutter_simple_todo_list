@@ -3,7 +3,6 @@ import 'package:todolist/create_screen.dart';
 import 'package:todolist/todo_item.dart';
 
 import 'main.dart';
-import 'todo.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({Key? key}) : super(key: key);
@@ -26,6 +25,10 @@ class _ListScreenState extends State<ListScreen> {
                     onTap: (todo) async {
                       todo.isDone = !todo.isDone;
                       await todo.save();
+                      setState(() {});
+                    },
+                    onTapDelete: (todo) async {
+                      await todo.delete();
                       setState(() {});
                     },
                   ))
